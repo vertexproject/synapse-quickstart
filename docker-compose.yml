@@ -1,0 +1,11 @@
+version: '3'
+services:
+    cortex:
+        image: vertexproject/synapse-cortex:v2.x.x
+        volumes:
+            # Map in a persistent storage directory
+            - cortex00:/vertex/storage
+            - ./data:/data
+volumes:
+    cortex00:
+        external: true
