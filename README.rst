@@ -27,10 +27,10 @@ start up a shell that you can use to execute commands.
 
 Linux
 -----
-TODO install docker
+TODO install docker and docker-compose
 
-Double-click ``cortex.sh`` from your file explorer to initialize the ``Cortex`` and
-start up a shell that you can use to execute commands.
+Execute ``cortex.sh`` from your terminal to initialize the ``Cortex`` and start up
+a shell that you can use to execute commands.
 
 Once your ``Cortex`` is Running
 ===============================
