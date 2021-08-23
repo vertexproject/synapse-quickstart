@@ -5,7 +5,7 @@ Welcome to the Synapse quickstart!
 
 This guide will show you how to blah blah blah...
 
-Download the quickstart ZIP file from TODO URL and unzip it to your
+Download the quickstart ZIP file from `the github repo`_ and unzip it to your
 host filesystem.
 
 Starting your ``Cortex``
@@ -53,3 +53,5 @@ Ingest a CSV file
 
 TODO topic covered in detail a BLOG URL, but here's how to use the quickstart
 ``Cortex`` to follow along. TODO add files to data/blogs/using-csvtool/foo.csv
+
+.. _the github repo: https://github.com/vertexproject/synapse-quickstart/archive/refs/heads/main.zip
