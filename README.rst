@@ -22,7 +22,7 @@ MacOS
 -----
 TODO install docker
 
-Double-click ``cortex.sh`` from your file explorer to initialize the ``Cortex`` and
+Double-click ``cortex.command`` from your file explorer to initialize the ``Cortex`` and
 start up a shell that you can use to execute commands.
 
 Linux

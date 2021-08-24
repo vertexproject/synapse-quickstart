@@ -2,6 +2,7 @@ version: '3'
 services:
     cortex:
         image: vertexproject/synapse-cortex:v2.x.x
+        container_name: cortex00
         volumes:
             # Map in a persistent storage directory
             - cortex00:/vertex/storage
