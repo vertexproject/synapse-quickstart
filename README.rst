@@ -33,19 +33,6 @@ Linux
 Execute ``cortex.sh`` from your terminal to initialize the ``Cortex`` and start up
 a shell that you can use to execute commands.
 
-Once your ``Cortex`` is Running
-===============================
-
-Once you have your ``Cortex`` started, you should be able to execute synapse
-tools, such as ``cmdr`` or ``csvtool`` from the shell prompt.::
-
-    python -m synapse.tools.cmdr cell:///vertex/storage
-
-Any files present in the ``data`` directory will be mapped into the folder
-``/data/`` within the shell and running docker container.  This will allow you
-to edit storm scripts, import csv files, and have an easy way to map files from
-your host into the docker container.
-
 Making sure everything is working
 ---------------------------------
 
@@ -61,6 +48,19 @@ If your output looks similar to this, everything is in working order::
     hello world
     complete. 0 nodes in 16 ms (0/sec).
     connection closed...
+
+Once your ``Cortex`` is Running
+===============================
+
+Once you have your ``Cortex`` started, you should be able to execute synapse
+tools, such as ``cmdr`` or ``csvtool`` from the shell prompt.::
+
+    python -m synapse.tools.cmdr cell:///vertex/storage
+
+Any files present in the ``data`` directory will be mapped into the folder
+``/data/`` within the shell and running docker container.  This will allow you
+to edit storm scripts, import csv files, and have an easy way to map files from
+your host into the docker container.
 
 Examples from our Blog
 ======================
