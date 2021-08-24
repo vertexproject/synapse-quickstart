@@ -45,13 +45,20 @@ Any files present in the ``data`` directory will be mapped into the folder
 to edit storm scripts, import csv files, and have an easy way to map files from
 your host into the docker container.
 
-Some Examples
-=============
+Examples from our Blog
+======================
 
-Ingest a CSV file
------------------
+Importing Data Doesn’t have to hard: Transferring Structured Data at Scale with Csvtool
+---------------------------------------------------------------------------------------
 
-TODO topic covered in detail a BLOG URL, but here's how to use the quickstart
-``Cortex`` to follow along. TODO add files to data/blogs/using-csvtool/foo.csv
+In `using csvtool`_ we demonstrate using ``csvtool`` to import and export data from a ``Cortex``. The
+examples used in the blog have been included in the ``/data/blogs/using-csvtool`` folder mapped into
+the running docker container.
+
+::
+    cd /data/blogs/using-csvtool
+    python -m synapse.tools.csvtool --csv-header --cli --cortex cell:///vertex/storage ingest.storm ingest.csv
 
 .. _the github repo: https://github.com/vertexproject/synapse-quickstart/archive/refs/heads/main.zip
+
+.. _using csvtool: https://vertex.link/blogs/using-csvtool/

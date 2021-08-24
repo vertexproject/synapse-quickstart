@@ -1,0 +1,5 @@
+// Loop over the $rows which are provided by csvtool
+for ($fqdn, $ipv4, $first, $last) in $rows {
+    // Add an inet:dns:a node and update its .seen time window
+    [ inet:dns:a = ( $fqdn, $ipv4 ) .seen=( $first, $last ) ]
+}
