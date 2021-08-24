@@ -56,6 +56,7 @@ examples used in the blog have been included in the ``/data/blogs/using-csvtool`
 the running docker container.
 
 ::
+
     cd /data/blogs/using-csvtool
     python -m synapse.tools.csvtool --csv-header --cli --cortex cell:///vertex/storage ingest.storm ingest.csv
 
