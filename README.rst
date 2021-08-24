@@ -1,42 +1,40 @@
 Synapse Quickstart
 ##################
 
-Welcome to the Synapse quickstart!
+Get started using Synapse Open-Source to start a `Cortex`_ and perform analysis within your area of expertise. 
 
-This guide will show you how to blah blah blah...
-
-Download the quickstart ZIP file from `the github repo`_ and unzip it to your
+Download the Quickstart ZIP file from `the github repo`_ and unzip it to your
 host filesystem.
 
-Starting your ``Cortex``
-========================
+Installing Synapse
+==================
 
-To run the docker containers included with this quickstart, you will need to
-make sure you have installed docker.  Follow the instructions at `get docker`_
+To run the Docker containers included with this Quickstart, you will need to
+make sure you have installed Docker Desktop.  Follow the instructions at `Get Docker`_
 before trying to execute any of the following commands.
 
-Windows
--------
+Starting a Cortex
+=================
 
-Double-click ``cortex.bat`` from your file explorer to initialize the ``Cortex`` and
+**Windows**
+
+Double-click ``cortex.bat`` from your file explorer to initialize the Cortex and
 start up a shell that you can use to execute commands.
 
-MacOS
------
+**MacOS (Intel Chip or Apple Chip)**
 
-Double-click ``cortex.command`` from your file explorer to initialize the ``Cortex`` and
+Double-click ``cortex.command`` from your file explorer to initialize the Cortex and
 start up a shell that you can use to execute commands.
 
-Linux
------
+**Linux**
 
-Execute ``cortex.sh`` from your terminal to initialize the ``Cortex`` and start up
+Execute ``cortex.sh`` from your terminal to initialize the Cortex and start up
 a shell that you can use to execute commands.
 
-Making sure everything is working
----------------------------------
+Check Your Work
+---------------
 
-To make sure your ``Cortex`` is running and all volume mappings are correct,
+To make sure your Cortex is running and all volume mappings are correct,
 run the ``helloworld.storm`` example included in ``/data/storm/``::
 
     python -m synapse.tools.cmdr cell:///vertex/storage 'storm --file /data/storm/helloworld.storm'
@@ -49,38 +47,30 @@ If your output looks similar to this, everything is in working order::
     complete. 0 nodes in 16 ms (0/sec).
     connection closed...
 
-Once your ``Cortex`` is Running
-===============================
+Using Synapse Tools
+===================
 
-Once you have your ``Cortex`` started, you should be able to execute synapse
-tools, such as ``cmdr`` or ``csvtool`` from the shell prompt.::
+Once you have your Cortex started, you should be able to execute Synapse `Tools`_, such as ``cmdr`` or ``csvtool`` from the shell prompt. ::
 
     python -m synapse.tools.cmdr cell:///vertex/storage
 
 Any files present in the ``data`` directory will be mapped into the folder
-``/data/`` within the shell and running docker container.  This will allow you
-to edit storm scripts, import csv files, and have an easy way to map files from
-your host into the docker container.
+``/data/`` within the shell and running Docker container.  This will allow you
+to edit Storm scripts, import csv files, and have an easy way to map files from
+your host into the Docker container.
 
 Examples from our Blog
 ======================
 
-Importing Data Doesn’t have to hard: Transferring Structured Data at Scale with Csvtool
----------------------------------------------------------------------------------------
+Using Csvtool to Ingest Data
+----------------------------
 
-In `using csvtool`_ we demonstrate using ``csvtool`` to import and export data from a ``Cortex``. The
-examples used in the blog have been included in the ``/data/blogs/using-csvtool`` folder mapped into
-the running docker container.
+In `using csvtool`_, we demonstrate using ``csvtool`` to import and export data from a Cortex. The examples used in the Vertex Project blog shared here have been included in the ``/data/blogs/using-csvtool`` folder mapped into the running Docker container.
 
 ::
 
     cd /data/blogs/using-csvtool
     python -m synapse.tools.csvtool --csv-header --cli --cortex cell:///vertex/storage ingest.storm ingest.csv
-
-.. _the github repo: https://github.com/vertexproject/synapse-quickstart/archive/refs/heads/main.zip
-.. _get docker: https://docs.docker.com/get-docker/
-
-.. _using csvtool: https://vertex.link/blogs/using-csvtool/
 
 Assuming the command executed with no errors, you should have a cmdr CLI prompt for your Cortex::
 
@@ -165,5 +155,8 @@ Here's what you should see as a result::
         Counted 4 nodes.
         complete. 4 nodes in 349 ms (11/sec).
 
-
-
+.. _Cortex: https://synapse.docs.vertex.link/en/latest/synapse/glossary.html#cortex
+.. _the github repo: https://github.com/vertexproject/synapse-quickstart/archive/refs/heads/main.zip
+.. _Get Docker: https://docs.docker.com/get-docker/
+.. _Tools: https://synapse.docs.vertex.link/en/latest/synapse/userguides/index_tools.html#tools
+.. _using csvtool: https://vertex.link/blogs/using-csvtool/
