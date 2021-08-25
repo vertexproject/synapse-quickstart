@@ -3,15 +3,18 @@ Synapse Quickstart
 
 Get started using Synapse Open-Source to start a `Cortex`_ and perform analysis within your area of expertise. 
 
-Download the Quickstart ZIP file from `the github repo`_ and unzip it to your
-host filesystem.
-
-Installing Synapse
-==================
+Installing Docker
+=================
 
 To run the Docker containers included with this Quickstart, you will need to
 make sure you have installed Docker Desktop.  Follow the instructions at `Get Docker`_
 before trying to execute any of the following commands.
+
+Installing Synapse
+==================
+
+Download the Quickstart ZIP file from `the github repo`_ and unzip it to your
+host filesystem.
 
 Starting a Cortex
 =================
@@ -127,7 +130,7 @@ Here's what you should see as a result::
 
 Use the following storm command to count the number of DNS A records for the domain theguardiannews.org::
 
-    storm inet:dns:a:fqdn=theguardiannews.org | count
+    storm inet:dns:a:fqdn=theguardiannews.org
 
 Here's what you should see as a result::
 
