@@ -37,25 +37,42 @@ a shell that you can use to execute commands.
 Check Your Work
 ---------------
 
-To make sure your Cortex is running and all volume mappings are correct,
-run the ``helloworld.storm`` example included in ``/data/storm/``::
+To make sure your ``Cortex`` is running, lets run the ``Storm`` CLI, manually
+add a node, and quit.
 
-    python -m synapse.tools.cmdr cell:///vertex/storage 'storm --file /data/storm/helloworld.storm'
+Execute the storm CLI from the linux root shell::
 
-If your output looks similar to this, everything is in working order::
+    root@77c281dcf338:/# python -m synapse.tools.storm cell:///vertex/storage
 
-    root@380534a376d5:/# python -m synapse.tools.cmdr cell:///vertex/storage 'storm --file /data/storm/helloworld.storm'
-    Executing query at 2021/08/24 12:28:38.419
-    hello world
-    complete. 0 nodes in 16 ms (0/sec).
-    connection closed...
+    Welcome to the Storm interpreter!
+
+    Local interpreter (non-storm) commands may be executed with a ! prefix:
+        Use !quit to exit.
+        Use !help to see local interpreter commands.
+
+    storm>
+
+Manually add an ``inet:user`` node::
+
+    storm> [ inet:user=visi ]
+    ..
+    inet:user=visi
+            .created = 2021/08/25 15:06:29.227
+    complete. 1 nodes in 22 ms (45/sec).
+    storm>
+
+Quit the storm CLI::
+
+    storm> !quit
+    o/
+    root@77c281dcf338:/#
 
 Using Synapse Tools
 ===================
 
-Once you have your Cortex started, you should be able to execute Synapse `Tools`_, such as ``cmdr`` or ``csvtool`` from the shell prompt. ::
+Once you have your Cortex started, you should be able to execute Synapse `Tools`_, such as ``storm`` or ``csvtool`` from the shell prompt. ::
 
-    python -m synapse.tools.cmdr cell:///vertex/storage
+    python -m synapse.tools.storm cell:///vertex/storage
 
 Any files present in the ``data`` directory will be mapped into the folder
 ``/data/`` within the shell and running Docker container.  This will allow you
@@ -73,90 +90,62 @@ In `using csvtool`_, we demonstrate using ``csvtool`` to import and export data 
 ::
 
     cd /data/blogs/using-csvtool
-    python -m synapse.tools.csvtool --csv-header --cli --cortex cell:///vertex/storage ingest.storm ingest.csv
-
-Assuming the command executed with no errors, you should have a cmdr CLI prompt for your Cortex::
-
-    cli>
+    python -m synapse.tools.csvtool --csv-header --cortex cell:///vertex/storage ingest.storm ingest.csv
 
 Test your ingest
 ----------------
 
-From the ``cmdr`` CLI, you can now query the data to make sure the nodes were created. 
+From the ``Storm`` CLI, you can now query the data to make sure the nodes were created. 
 
 **Example #1**
 
-Use the following storm command to see the ``inet:fqdn`` nodes that were created::
+Use the following storm command to display the newly added ``inet:dns:a`` records::
 
-    cli> storm inet:fqdn
-    
-Here's what you should see as a result::
-
-    Executing query at 2021/08/24 14:12:43.876
-        inet:fqdn=org
-                .created = 2021/08/24 14:12:36.440
-                :host = org
-                :issuffix = True
-                :iszone = False
-        inet:fqdn=bbc-news.org
-                .created = 2021/08/24 14:12:36.608
-                :domain = org
-                :host = bbc-news
-                :issuffix = False
-                :iszone = True
-                :zone = bbc-news.org
-        inet:fqdn=theguardiannews.org
-                .created = 2021/08/24 14:12:36.440
-                :domain = org
-                :host = theguardiannews
-                :issuffix = False
-                :iszone = True
-                :zone = theguardiannews.org
-        inet:fqdn=com
-                .created = 2021/08/24 14:12:36.593
-                :host = com
-                :issuffix = True
-                :iszone = False
-        inet:fqdn=nato-news.com
-                .created = 2021/08/24 14:12:36.593
-                :domain = com
-                :host = nato-news
-                :issuffix = False
-                :iszone = True
-                :zone = nato-news.com
-        complete. 5 nodes in 45 ms (111/sec).
-
-**Example #2**
-
-Use the following storm command to count the number of DNS A records for the domain theguardiannews.org::
-
-    storm inet:dns:a:fqdn=theguardiannews.org
+    storm> inet:dns:a
 
 Here's what you should see as a result::
 
-    Executing query at 2021/08/24 14:50:17.543
-        inet:dns:a=('theguardiannews.org', '12.131.129.89')
-                .created = 2021/08/24 14:12:36.440
-                .seen = ('2016/09/20 13:10:12.000', '2016/09/20 13:10:12.001')
-                :fqdn = theguardiannews.org
-                :ipv4 = 12.131.129.89
-        inet:dns:a=('theguardiannews.org', '5.135.183.154')
-                .created = 2021/08/24 14:12:36.573
-                .seen = ('2015/12/11 10:57:12.000', '2015/12/14 10:59:15.000')
-                :fqdn = theguardiannews.org
-                :ipv4 = 5.135.183.154
-        inet:dns:a=('theguardiannews.org', '31.210.118.89')
-                .created = 2021/08/24 14:12:36.580
-                .seen = ('2015/12/18 09:25:42.000', '2016/12/09 10:59:08.000')
-                :fqdn = theguardiannews.org
-                :ipv4 = 31.210.118.89
-        inet:dns:a=('theguardiannews.org', '32.210.118.89')
-                .created = 2021/08/24 14:12:36.586
-                .seen = ('2015/12/17 00:00:00.000', '2015/12/17 18:17:55.000')
-                :fqdn = theguardiannews.org
-                :ipv4 = 32.210.118.89
-        Counted 4 nodes.
-        complete. 4 nodes in 349 ms (11/sec).
+    inet:dns:a=('bbc-news.org', '207.180.214.158')
+            .created = 2021/08/24 11:54:33.958
+            .seen = ('2019/04/15 07:16:09.364', '2019/04/24 07:31:37.271')
+            :fqdn = bbc-news.org
+            :ipv4 = 207.180.214.158
+    inet:dns:a=('theguardiannews.org', '12.131.129.89')
+            .created = 2021/08/24 11:54:33.941
+            .seen = ('2016/09/20 13:10:12.000', '2016/09/20 13:10:12.001')
+            :fqdn = theguardiannews.org
+            :ipv4 = 12.131.129.89
+    inet:dns:a=('theguardiannews.org', '32.210.118.89')
+            .created = 2021/08/24 11:54:33.954
+            .seen = ('2015/12/17 00:00:00.000', '2015/12/17 18:17:55.000')
+            :fqdn = theguardiannews.org
+            :ipv4 = 32.210.118.89
+    inet:dns:a=('bbc-news.org', '192.64.119.28')
+            .created = 2021/08/24 11:54:33.960
+            .seen = ('2019/04/18 19:04:01.000', '2019/04/19 07:31:27.360')
+            :fqdn = bbc-news.org
+            :ipv4 = 192.64.119.28
+    inet:dns:a=('theguardiannews.org', '5.135.183.154')
+            .created = 2021/08/24 11:54:33.951
+            .seen = ('2015/12/11 10:57:12.000', '2015/12/14 10:59:15.000')
+            :fqdn = theguardiannews.org
+            :ipv4 = 5.135.183.154
+    inet:dns:a=('bbc-news.org', '217.160.182.197')
+            .created = 2021/08/24 11:54:33.961
+            .seen = ('2015/05/03 10:31:14.000', '2015/05/03 10:31:14.001')
+            :fqdn = bbc-news.org
+            :ipv4 = 217.160.182.197
+    inet:dns:a=('theguardiannews.org', '31.210.118.89')
+            .created = 2021/08/24 11:54:33.953
+            .seen = ('2015/12/18 09:25:42.000', '2016/12/09 10:59:08.000')
+            :fqdn = theguardiannews.org
+            :ipv4 = 31.210.118.89
+    inet:dns:a=('nato-news.com', '185.82.202.174')
+            .created = 2021/08/24 11:54:33.955
+            .seen = ('2015/10/10 00:00:00.000', '2016/09/28 05:30:53.000')
+            :fqdn = nato-news.com
+            :ipv4 = 185.82.202.174
+    complete. 8 nodes in 9 ms (888/sec).
 
 .. _Cortex: https://synapse.docs.vertex.link/en/latest/synapse/glossary.html#cortex
 .. _the github repo: https://github.com/vertexproject/synapse-quickstart/archive/refs/heads/main.zip
