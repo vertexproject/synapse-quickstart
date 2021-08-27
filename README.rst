@@ -1,7 +1,7 @@
 Synapse Quickstart
 ##################
 
-Get started using Synapse Open-Source to start a `Cortex`_ and perform analysis within your area of expertise. 
+Get started using Synapse Open-Source to start a `Cortex`_ and try it out! 
 
 Installing Docker
 =================
